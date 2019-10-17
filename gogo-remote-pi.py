@@ -1,5 +1,6 @@
 # from classes.testGogo.py import TestGogo
 import classes.testGogo as test
+import classes.gogotalk as gogotalk
 # import classes.gogotalk as gogotalk
 
 import paho.mqtt.client as mqtt
