@@ -1,7 +1,4 @@
-# import paho.mqtt.client as mqtt
-
 # from classes.testGogo.py import TestGogo
-# import sys
 import classes.testGogo as test
 import classes.gogotalk as gogotalk
 
@@ -11,6 +8,7 @@ messageCome = ""
 
 def cmdProcess(msg):
     if (msg == "ledOn"):
+<<<<<<< HEAD
         # gogoMqtt.ledControl(0,1)
         gogoTest.process1()
     elif (msg == "ledOff"):
@@ -28,6 +26,25 @@ def cmdProcess(msg):
     else:
         gogoTest.processNone()
         # gogoMqtt.processNone()
+=======
+        gogoMqtt.ledControl(0,1)
+        gogoTest.process1()
+    elif (msg == "ledOff"):
+        gogoTest.processNone()
+	gogoMqtt.ledControl(0,0)
+    elif (msg == "beep"):
+        gogoMqtt.beep()
+        gogoTest.process2()
+    elif (msg == "motorOn"):
+	gogoTest.processNone()
+        gogoMqtt.mOn()
+    elif (msg == "motorOff"):
+        gogoTest.processNone()
+	gogoMqtt.mOff()
+    else:
+	#gogoTest,processNone()
+        gogoMqtt.processNone()
+>>>>>>> 1046b10eed60556744cc11bb2a84120f468d3e6a
 
 
 def on_connect(client, userdata, flags, rc):
