@@ -1,30 +1,51 @@
 # from classes.testGogo.py import TestGogo
 import classes.testGogo as test
-import classes.gogotalk as gogotalk
+# import classes.gogotalk as gogotalk
 
 import paho.mqtt.client as mqtt
 
 messageCome = ""
 
-def cmdProcess(msg):
-    if (msg == "ledOn"):
+def cmdProcess(message):
+    #  gogo all cmd
+    print('command ' + message)
+    msg = message.split(" ")
+    if (msg[0] == "ledOn"):
         # gogoMqtt.ledControl(0,1)
         gogoTest.process1()
-    elif (msg == "ledOff"):
+    elif (msg[0] == "ledOff"):
         gogoTest.processNone()
         # gogoMqtt.ledControl(0,0)
-    elif (msg == "beep"):
+    elif (msg[0] == "beep"):
         # gogoMqtt.beep()
         gogoTest.process2()
-    elif (msg == "motorOn"):
-        # gogoMqtt.mOn()
-        gogoTest.processNone()
-    elif (msg == "motorOff"):
+    elif (msg[0] == "motorOn"):
+        gogoMqtt.mOn()
+        # gogoTest.processNone()
+    elif (msg[0] == "motorOff"):
         # gogoMqtt.mOff()
+        # gogoTest.processNone()
+    elif (msg[0] == "motorRD"):
+        # gogoTest.processNone()
+        gogoMqtt.mRD()
+    elif (msg[0] == "motorCW"):
         gogoTest.processNone()
+        gogoMqtt.mCW()
+    elif (msg[0] == "motorCCW"):
+        # gogoTest.processNone()
+        gogoMqtt.mCCW()
+    elif (msg[0] == "talkToMotor"):
+        # gogoTest.processNone()
+        gogoMqtt.talkToMotor(msg[1])
+    elif (msg[0] == "setPower"):
+        # gogoTest.processNone()
+        gogoMqtt.setPower(msg[1])
+    elif (msg[0] == "runStop"):
+        # gogoTest.processNone()
+        gogoMqtt.LogoControl(2)
     else:
-        gogoTest.processNone()
-        # gogoMqtt.processNone()
+        # gogoTest.processNone()
+        gogoMqtt.processNone()
 
 
 def on_connect(client, userdata, flags, rc):
