@@ -6,22 +6,37 @@ import paho.mqtt.client as mqtt
 
 messageCome = ""
 
-def cmdProcess(msg):
-    if (msg == "ledOn"):
+def cmdProcess(message):
+    print('command '+message)
+    msg = message.split(" ")
+    if (msg[0] == "ledOn"):
         gogoMqtt.ledControl(0,1)
         gogoTest.process1()
-    elif (msg == "ledOff"):
+    elif (msg[0] == "ledOff"):
         gogoTest.processNone()
 	gogoMqtt.ledControl(0,0)
-    elif (msg == "beep"):
+    elif (msg[0] == "beep"):
         gogoMqtt.beep()
         gogoTest.process2()
-    elif (msg == "motorOn"):
+    elif (msg[0] == "motorOn"):
 	gogoTest.processNone()
         gogoMqtt.mOn()
-    elif (msg == "motorOff"):
+    elif (msg[0] == "motorOff"):
         gogoTest.processNone()
 	gogoMqtt.mOff()
+    elif (msg[0] == "motorRD"):
+	gogoMqtt.mRD()
+    elif (msg[0] == "motorCW"):
+	gogoMqtt.mCW()
+    elif (msg[0] == "motorCCW"):
+	gogoMqtt.mCCW()
+    elif (msg[0] == "talkToMotor"):
+	print("talk to motor : "+msg[1])
+	gogoMqtt.talkToMotor(msg[1])
+    elif (msg[0] == "setPower"):
+	gogoMqtt.setPower(msg[1])
+    elif (msg[0] == "runStop"):
+	gogoMqtt.LogoControl(2)
     else:
 	#gogoTest,processNone()
         gogoMqtt.processNone()
