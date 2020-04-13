@@ -142,6 +142,8 @@ class gogoTalk:
             self.talkToMotor(command[1])
         elif command[0] == 'setPower':
             self.setPower(command[1])
+        elif command[0] == 'setServoDuty':
+            self.setServoDuty(command[1])
         elif command[0] == 'runStop':
             self.LogoControl(2)
 
@@ -712,7 +714,7 @@ class gogoTalk:
         self.sendCommand(cmdList)
 
 
-# if __name__ == '__main__':
+#if __name__ == '__main__':
 #     gogo = gogoTalk()
 #     gogo.beep()
 
