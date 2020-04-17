@@ -1,10 +1,11 @@
-import hid
 import time
 import datetime
 
 import math
 import os
 import sys
+
+import hid
 
 # import io
 # import webbrowser
@@ -714,13 +715,15 @@ class gogoTalk:
         self.sendCommand(cmdList)
 
 
-#if __name__ == '__main__':
-#     gogo = gogoTalk()
-#     gogo.beep()
-
-#     gogo.talkToMotor(0b1)
+if __name__ == '__main__':
+     gogo = gogoTalk()
+     #gogo.processCommand(gogo,"beep::")
+     gogo.beep()
+ #    gogo.talkToMotor(0b1)
+#     gogo.mOn()
 #     while (1):
 #         gogo.setServoDuty(20)
 #         time.sleep(1)
 #         gogo.setServoDuty(40)
 #         time.sleep(1)
+

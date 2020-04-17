@@ -13,18 +13,15 @@ def cmdProcess(message):
     msg = message.split(" ")
     if (msg[0] == "ledOn"):
         gogoMqtt.ledControl(0,1)
-        gogoTest.process1()
     elif (msg[0] == "ledOff"):
-        gogoTest.processNone()
 	gogoMqtt.ledControl(0,0)
     elif (msg[0] == "beep"):
         gogoMqtt.beep()
-        gogoTest.process2()
     elif (msg[0] == "motorOn"):
-	gogoTest.processNone()
+	print("motor : on")
         gogoMqtt.mOn()
     elif (msg[0] == "motorOff"):
-        gogoTest.processNone()
+	print("motor : off")
 	gogoMqtt.mOff()
     elif (msg[0] == "motorRD"):
 	gogoMqtt.mRD()
@@ -66,6 +63,8 @@ if __name__=='__main__':
     gogoMqtt.beep()
     time.sleep(1)
     gogoMqtt.beep()
+    gogoMqtt.talkToMotor(1)
+    gogoMqtt.mOff()
     # gogoTest.processCommand()
     print("mqtt starting")
     # mttConnect()
